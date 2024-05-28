@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random 3-Digit QR Code</h1>
+    <div id="qrcode"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs2@0.1.0/qrcode.min.js"></script>
+    <script>
+        function generateRandomNumber() {
+            return Math.floor(100 + Math.random() * 900).toString();
+        }
+
+        function generateQRCode() {
+            const randomNum = generateRandomNumber();
+            const qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.innerHTML = '';
+            new QRCode(qrcodeContainer, {
+                text: randomNum,
+                width: 128,
+                height: 128
+            });
+        }
+
+        // Generate QR code on page load
+        window.onload = generateQRCode;
+    </script>
+</body>
+</html>
