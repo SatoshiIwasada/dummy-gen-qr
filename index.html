@@ -24,7 +24,7 @@
     <div id="qrcode"></div>
 
     <!-- QRCode.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
         function generateRandomNumber() {
             return Math.floor(100 + Math.random() * 900).toString();
@@ -34,10 +34,7 @@
             const randomNum = generateRandomNumber();
             const qrcodeContainer = document.getElementById('qrcode');
             qrcodeContainer.innerHTML = '';
-            QRCode.toCanvas(qrcodeContainer, randomNum, function (error) {
-                if (error) console.error(error);
-                console.log('QR code generated for number:', randomNum);
-            });
+            new QRCode(qrcodeContainer, randomNum);
         }
 
         // Generate QR code on page load
